@@ -1,4 +1,4 @@
-package fr.m2i.firstspringproject.model;
+package fr.m2i.firstspringproject.models;
 
 public class HelloWorld {
 

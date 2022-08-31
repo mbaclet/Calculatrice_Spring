@@ -1,19 +1,17 @@
-package fr.m2i.firstspringproject.model;
-
-import fr.m2i.firstspringproject.utils.OperationEnum;
+package fr.m2i.firstspringproject.models;
 
 public class CalculatriceModel {
 
     private int firstArg;
     private int secondArg;
-    private OperationEnum operationType;
+    private String operationType;
     private int result;
 
     public CalculatriceModel(){
 
     }
 
-    public CalculatriceModel(int firstArg, int secondArg, OperationEnum operationType, int result) {
+    public CalculatriceModel(int firstArg, int secondArg, String operationType, int result) {
         this.firstArg = firstArg;
         this.secondArg = secondArg;
         this.operationType = operationType;
@@ -36,11 +34,11 @@ public class CalculatriceModel {
         this.secondArg = secondArg;
     }
 
-    public OperationEnum getOperationType() {
+    public String getOperationType() {
         return operationType;
     }
 
-    public void setOperationType(OperationEnum operationType) {
+    public void setOperationType(String operationType) {
         this.operationType = operationType;
     }
 

@@ -1,6 +1,4 @@
-package fr.m2i.firstspringproject.truc;
-
-import org.springframework.stereotype.Component;
+package fr.m2i.firstspringproject.trucs;
 
 public class Calculatrice {
 

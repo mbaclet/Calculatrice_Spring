@@ -1,6 +1,6 @@
-package fr.m2i.firstspringproject.service;
+package fr.m2i.firstspringproject.services;
 
-import fr.m2i.firstspringproject.model.HelloWorld;
+import fr.m2i.firstspringproject.models.HelloWorld;
 import org.springframework.stereotype.Component;
 
 @Component

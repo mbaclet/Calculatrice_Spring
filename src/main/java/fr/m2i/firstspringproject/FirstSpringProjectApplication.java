@@ -1,8 +1,7 @@
 package fr.m2i.firstspringproject;
 
-import fr.m2i.firstspringproject.service.CalculatriceService;
-import fr.m2i.firstspringproject.service.HelloWorldService;
-import fr.m2i.firstspringproject.service.SaisieService;
+import fr.m2i.firstspringproject.services.HelloWorldService;
+import fr.m2i.firstspringproject.services.SaisieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -24,7 +23,5 @@ public class FirstSpringProjectApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         System.out.println(helloWorldService.getHelloWorld());
-
-        System.out.println(saisieService.askSaisie());
     }
 }
