@@ -1,11 +1,12 @@
 package fr.m2i.firstspringproject.controllers;
 
+import fr.m2i.firstspringproject.models.CalculatriceModel;
+import fr.m2i.firstspringproject.models.User;
 import fr.m2i.firstspringproject.services.SaisieService;
+import fr.m2i.firstspringproject.trucs.Calculatrice;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/calculatrice")
@@ -20,7 +21,7 @@ public class HomeController {
     )
     public String resultAdd(@RequestParam(value="arg1") final int arg1, @RequestParam(value="arg2") final int arg2)  {
         int res = saisieService.askSaisie(arg1, arg2, "ADDITION");
-        
+
         return String.format("Le résultat de l'addition est : %s.", res);
     }
 
@@ -54,5 +55,35 @@ public class HomeController {
         int res = saisieService.askSaisie(arg1, arg2, "MULTIPLICATION");
 
         return String.format("Le résultat de la multiplication est : %s.", res);
+    }
+
+    @PostMapping(
+            name="sayhello",
+            value="/addpost",
+            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+            produces = {MediaType.TEXT_PLAIN_VALUE, MediaType.APPLICATION_JSON_VALUE}
+    )
+    public String AddPost(@RequestBody Iterable<CalculatriceModel> calcules){
+
+        StringBuilder result = new StringBuilder();
+        for(CalculatriceModel calcul:calcules){
+            result.append(calcul.getFirstArg()+"+"+ calcul.getSecondArg()+"="+saisieService.askSaisie(calcul.getFirstArg(), calcul.getSecondArg(), "ADDITION")+", ");
+        }
+        return String.format("%s", result.toString());
+    }
+
+    @PostMapping(
+            name="sayhello",
+            value="/sayhellopost",
+            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+            produces = {MediaType.TEXT_PLAIN_VALUE, MediaType.APPLICATION_JSON_VALUE}
+    )
+    public String SayHelloPost(@RequestBody Iterable<User> users){
+
+        StringBuilder result = new StringBuilder();
+        for(User user:users){
+            result.append(user.getNom()+" "+ user.getPrenom()+", ");
+        }
+        return String.format("Bonjour à %s", result.toString());
     }
 }
